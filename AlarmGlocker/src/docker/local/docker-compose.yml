@@ -1,0 +1,18 @@
+version: '3.9'
+
+volumes:
+  store_postgres_data:
+    driver: local
+
+services:
+  postgres_for_store:
+    container_name: store_postgres_container
+    image: postgres:13.3
+    volumes:
+      - store_postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: alarmGlocker_db
+      POSTGRES_USER: telki
+      POSTGRES_PASSWORD: telki123
+    ports:
+      - "12333:5432"
